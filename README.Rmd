@@ -23,6 +23,10 @@ A graphical device for the line-us plotter, obviously
 ## Inspiration / Foundation
 
 [thomasp85/fawkes](https://github.com/thomasp85/fawkes)
+
 [coolbutuseless/devout](https://github.com/coolbutuseless/devout)
+
 [ixd-hof/LineUs_SVG](ixd-hof/LineUs_SVG)
+
 [Line-us/LineUsPythonModule](https://github.com/Line-us/LineUsPythonModule)
+

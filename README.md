@@ -1,7 +1,19 @@
 
-# rlineus
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+rlineus
+=======
 
-import stuff on all the funcitons?? check https://github.com/thomasp85/fawkes
+<!-- badges: start -->
+<!-- badges: end -->
+A graphical device for the line-us plotter, obviously
 
-build a device like described here:
-https://github.com/coolbutuseless/devout
+Inspiration / Foundation
+------------------------
+
+[thomasp85/fawkes](https://github.com/thomasp85/fawkes)
+
+[coolbutuseless/devout](https://github.com/coolbutuseless/devout)
+
+[ixd-hof/LineUs\_SVG](ixd-hof/LineUs_SVG)
+
+[Line-us/LineUsPythonModule](https://github.com/Line-us/LineUsPythonModule)
