@@ -48,6 +48,16 @@ plotter_callback <- function(
   state
 }
 .circle <- function(args, state){
+  sv <- function(x = NULL, y = NULL, canvas = state$rdata$canvas){
+    scale_value(x, y, canvas)
+  }
+  n_points <-  round((2 * pi) / acos((args$r - 0.5) / args$r)) * 10
+  angles <- seq(0, 2*pi, length.out = n_points)
+  shape <- list(
+    x = cos(angles) * args$r + args$x,
+    y = sin(angles) * args$r + args$y
+  )
+  state$rdata$pl$g01(sv(x=shape$x[1]),sv(y=shape$y[1]))
   state
 }
 .line<- function(args, state){
