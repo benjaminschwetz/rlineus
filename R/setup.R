@@ -36,3 +36,4 @@ load_plotter <- function() {
   plotter <- py_lineus$LineUs()
   return(plotter)
 }
+

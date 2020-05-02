@@ -28,7 +28,7 @@ plotter_callback <- function(
 }
 .open <- function(args, state){
   state$rdata$pl$connect()
-  state$rdata$pl$g01(0,0)
+  state$rdata$pl$g01(0,0,z_up)
   state
 }
 .close <- function(args, state){
@@ -55,7 +55,9 @@ plotter_callback <- function(
     scale_value(x, y, canvas)
   }
   state$rdata$pl$g01(sv(x=args$x1),sv(y=args$y1))
+  state$rdata$pl$g01(z=z_dn)
   state$rdata$pl$g01(sv(x=args$x2),sv(y=args$y2))
+  state$rdata$pl$g01(z=z_up)
   state
 }
 scale_value <- function(x= NULL, y = NULL,
@@ -83,3 +85,5 @@ scale_value <- function(x= NULL, y = NULL,
   out <- ((limits[2]-limits[1])*(val - range[1])/(range[2]-range[1]))+limits[1]
   return(out)
 }
+z_up <- 600
+z_dn <- 250
