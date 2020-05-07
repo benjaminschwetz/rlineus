@@ -36,4 +36,18 @@ load_plotter <- function() {
   plotter <- py_lineus$LineUs()
   return(plotter)
 }
+render_canvas <- function( plotter,
+                           x_lim = c(650,1775),
+                           y_lim = c(-1000, 1000),
+                           keep_con = FALSE
+){
+  if(!plotter$connected()) plotter$connect()
+  z <- fetch_z_map(plotter)
+  out <- interpolate_z_matrix(x_lim, y_lim, z)
+  if(!keep_con) plotter$disconnect()
+  return(out)
+}
+
+
+
 

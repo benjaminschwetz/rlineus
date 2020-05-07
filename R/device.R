@@ -1,16 +1,7 @@
-# py_lineus <- NULL
-# .onLoad <- function(libname, pkgname) {
-#   py_lineus <<- reticulate::import("lineus", delay_load = TRUE)
-# }
 lineus_dev <- function(){
   plotter <- load_plotter()
   plotter$connect()
-  z_corners <- matrix(fetch_z_map(plotter), nrow = 2)
-  z_mat <- interpolate_z_matrix(
-    x_limits = c(min_x, max_x),
-    y_limits = c(min_y, max_y),
-    z_corners = z_corners
-  )
+  z_mat <- render_canvas(plotter, keep_con = TRUE)
   z_mat$z <- round(z_mat$z)
   devout::rdevice(
     rfunction = plotter_callback,
@@ -163,7 +154,7 @@ fetch_z_map <- function(plotter){
   str_z_map <- plotter$get_info()$ZMap
   v_z_map <- strsplit(str_z_map, ";")[[1]]
   num_z_map <- as.numeric(v_z_map)
-  return(num_z_map)
+  matrix(num_z_map, nrow = 2)
 }
 interpolate_z_matrix <- function(x_limits, y_limits, z_corners){
   akima::bilinear.grid(
