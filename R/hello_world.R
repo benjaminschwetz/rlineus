@@ -1,5 +1,14 @@
-hello_world <- function(){
-lineus_dev()
-boxplot(data = iris, Sepal.Length ~Species)
-dev.off()
+hello_world <- function(what = c("boxplot", "polyline")){
+  what <- match.arg(what)
+  lineus_dev()
+  switch(
+    what,
+    "boxplot" =   boxplot(data = iris, Sepal.Length ~Species),
+    "polyline" = {
+      x <- seq(0,8*pi,length.out=100)
+      y <- sin(x)
+      plot(x,y,type="l")
+    }
+  )
+  dev.off()
 }
