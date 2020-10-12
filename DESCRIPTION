@@ -11,3 +11,8 @@ Description: This package attempts to make line-us plotters usable in R.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    reticulate,
+    devout (>= 0.2.7)
+Remotes:  
+    coolbutuseless/devout
