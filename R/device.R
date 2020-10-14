@@ -41,7 +41,7 @@ plotter_callback <- function(
   state
 }
 .close <- function(args, state){
-  state$rdata$pl$disconnect()
+  state$rdata$pl$close()
   state
 }
 .abort <- function(args, state){
