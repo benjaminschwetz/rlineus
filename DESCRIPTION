@@ -12,7 +12,8 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    reticulate,
-    devout (>= 0.2.7)
-Remotes:  
+    devout (>= 0.2.7),
+    akima,
+    websocket
+Remotes: 
     coolbutuseless/devout
