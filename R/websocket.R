@@ -38,13 +38,10 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                  out <- self$retrieve_message()
                                  return(out)
                                },
-                               zmap = function(){
+                               zmap = function(timeout = Inf){
                                  private$websocket$send("G31")
-                                 response <- self$listen()
-                                 v_z_map <- strsplit(response, ";")[[1]]
-                                 num_z_map <- as.numeric(v_z_map)
-                                 matrix(num_z_map, nrow = 2)
-                                 response
+                                 response <- self$retrieve_message(timeout)
+                                 parse_zmap(response)
                                },
                                clear_log = function(){
                                  private$log <- NULL
