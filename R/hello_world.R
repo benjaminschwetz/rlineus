@@ -1,3 +1,9 @@
+#' Testing the plotter
+#'
+#' @param what string, either boxplot or polyline
+#'
+#' @return
+#' @export
 hello_world <- function(what = c("boxplot", "polyline")){
   what <- match.arg(what)
   lineus_dev()

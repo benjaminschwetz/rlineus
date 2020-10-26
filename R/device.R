@@ -1,7 +1,20 @@
+#' graphics device for the plotter
+#' see readme for how to use it
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' ## Only run this example in interactive R sessions
+#' if (interactive()) {
+#'  lineus_dev()
+#'  boxplot(data = iris, Sepal.Length ~Species)
+#'  dev.off()
+#' }
 lineus_dev <- function(){
-  plotter <- load_plotter()
-  plotter$connect()
-  z_mat <- render_canvas(plotter, keep_con = TRUE)
+  plotter <- LineUsPlotter$new()
+  Sys.sleep(.5)
+  z_mat <- render_canvas(plotter)
   z_mat$z <- round(z_mat$z)
   devout::rdevice(
     rfunction = plotter_callback,
