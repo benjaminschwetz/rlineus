@@ -1,3 +1,16 @@
+#' graphics device for the plotter
+#' see readme for how to use it
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' ## Only run this example in interactive R sessions
+#' if (interactive()) {
+#'  lineus_dev()
+#'  boxplot(data = iris, Sepal.Length ~Species)
+#'  dev.off()
+#' }
 lineus_dev <- function(){
   plotter <- LineUsPlotter$new()
   Sys.sleep(.5)
