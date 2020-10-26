@@ -1,6 +1,6 @@
 lineus_dev <- function(){
   plotter <- LineUsPlotter$new()
-  later::run_now(Inf)
+  Sys.sleep(.5)
   z_mat <- render_canvas(plotter)
   z_mat$z <- round(z_mat$z)
   devout::rdevice(
@@ -41,7 +41,7 @@ plotter_callback <- function(
   state
 }
 .close <- function(args, state){
-  state$rdata$pl$close()
+  state$rdata$pl$disconnect()
   state
 }
 .abort <- function(args, state){
