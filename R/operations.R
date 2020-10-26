@@ -32,10 +32,7 @@ draw <- function(lineus, from, to, cur=FALSE, canvas = NULL){
   crawl(lineus, to[1], to[2], canvas)
 }
 fetch_z_map <- function(plotter){
-  str_z_map <- plotter$get_info()$ZMap
-  v_z_map <- strsplit(str_z_map, ";")[[1]]
-  num_z_map <- as.numeric(v_z_map)
-  matrix(num_z_map, nrow = 2)
+  plotter$zmap()
 }
 interpolate_z_matrix <- function(x_limits, y_limits, z_corners){
   akima::bilinear.grid(

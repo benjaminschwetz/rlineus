@@ -1,11 +1,8 @@
 LineUsPlotter <- R6::R6Class("LineUsPlotter",
                              public = list(
-                               initialize = function(url = "ws://line-us.local",
-                                                     autoConnect = FALSE){
-                                 private$websocket <- websocket::WebSocket$new(url,
-                                                                               autoConnect)
+                               initialize = function(url = "ws://line-us.local"){
+                                 private$websocket <- websocket::WebSocket$new(url)
                                  private$websocket$onOpen(function(event) {
-                                   cat("Connection opened\n")
                                  })
                                  private$websocket$onMessage(function(event) {
                                    self$catch_message(event$data)
@@ -17,6 +14,7 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                  private$websocket$onError(function(event) {
                                    cat("Client failed to connect: ", event$message, "\n")
                                  })
+                                 self$retrieve_message()
                                },
                                catch_message = function(message){
                                  private$pending_message <- message
@@ -48,6 +46,12 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                },
                                connect = function() {
                                  private$websocket$connect()
+                               },
+                               disconnect = function() {
+                                 private$websocket$close()
+                               },
+                               connected = function() {
+                                 private$websocket$readyState() == 1
                                }
                              ),
                              private = list(

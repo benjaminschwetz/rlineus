@@ -1,7 +1,7 @@
 lineus_dev <- function(){
-  plotter <- load_plotter()
-  plotter$connect()
-  z_mat <- render_canvas(plotter, keep_con = TRUE)
+  plotter <- LineUsPlotter$new()
+  later::run_now(Inf)
+  z_mat <- render_canvas(plotter)
   z_mat$z <- round(z_mat$z)
   devout::rdevice(
     rfunction = plotter_callback,
