@@ -13,7 +13,6 @@ A graphical device for the line-us plotter.
 
 ``` r
 remotes::install_github("benjaminschwetz/rlineus")
-install_py_lineus() # installs python dependencies
 ```
 
 ## Usage
@@ -53,3 +52,5 @@ dev.off()
 [ixd-hof/LineUs\_SVG](https://github.com/ixd-hof/LineUs_SVG)
 
 [Line-us/LineUsPythonModule](https://github.com/Line-us/LineUsPythonModule)
+
+[beardicus/line-us](https://github.com/beardicus/line-us)

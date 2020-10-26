@@ -25,7 +25,6 @@ A graphical device for the line-us plotter.
 
 ```{r eval=FALSE, include=TRUE}
 remotes::install_github("benjaminschwetz/rlineus")
-install_py_lineus() # installs python dependencies
 ```
 
 
@@ -66,3 +65,4 @@ dev.off()
 
 [Line-us/LineUsPythonModule](https://github.com/Line-us/LineUsPythonModule)
 
+[beardicus/line-us](https://github.com/beardicus/line-us)
