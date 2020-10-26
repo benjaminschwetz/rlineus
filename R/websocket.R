@@ -8,7 +8,6 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                    self$catch_message(event$data)
                                  })
                                  private$websocket$onClose(function(event) {
-                                   self$clear_log()
                                    cat("Plotter disconnected")
                                  })
                                  private$websocket$onError(function(event) {
