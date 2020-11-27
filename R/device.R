@@ -39,6 +39,7 @@ plotter_callback <- function(
     line = .line(args, state),
     polygon = .polygon(args, state),
     polyline = .polyline(args, state),
+    path = .path(args, state),
     rect = .rect(args, state)
   )
   state
@@ -141,5 +142,30 @@ plotter_callback <- function(
   up(state$rdata$pl)
   state
 }
-
+.path <- function(args, state){
+  path_id <- rep(seq_len(args$npoly), args$nper)
+  x <- split(args$x, path_id)
+  y <- split(args$y, path_id)
+  paths <- lapply(seq_along(x), function(i) {
+    list(x = x[[i]], y = y[[i]])
+  })
+  lapply(paths,
+         function(curve){
+           fly(state$rdata$pl, curve$x[1],curve$y[1])
+           down(state$rdata$pl, x = curve$x[1], y = curve$y[1], canvas = state$rdata$zm)
+           mapply(
+             crawl,
+             x= curve$x,
+             y = curve$y,
+             MoreArgs=
+               list(
+                 lineus = state$rdata$pl,
+                 canvas = state$rdata$zm
+               )
+           )
+           up(state$rdata$pl)
+         }
+  )
+  state
+}
 
