@@ -1,6 +1,8 @@
 LineUsPlotter <- R6::R6Class("LineUsPlotter",
                              public = list(
-                               initialize = function(url = "ws://line-us.local"){
+                               initialize = function(url = "ws://line-us.local",
+                                                     portrait = FALSE){
+                                 private$portrait <- portrait
                                  private$websocket <- websocket::WebSocket$new(url)
                                  private$websocket$onOpen(function(event) {
                                  })
@@ -26,18 +28,25 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                  return(message)
                                },
                                g01 = function(x=NULL,y=NULL, z=NULL) {
-                                 if(!is.null(x)) {
-                                   if(x < 650) x <- 650 else if(x>1775) x <- 1750
+                                 if(private$portrait) {
+                                   x_draw <- x
+                                   y_draw <- y
+                                 } else {
+                                   x_draw <- y
+                                   y_draw <- x
                                  }
-                                 if(!is.null(y)) {
-                                   if(y < -1000) y <- -1000 else if(y>1000) y <- 1000
+                                 if(!is.null(x_draw)) {
+                                   if(x_draw < 650) x_draw <- 650 else if(x_draw>1775) x_draw <- 1750
+                                 }
+                                 if(!is.null(y_draw)) {
+                                   if(y_draw < -1000) y_draw <- -1000 else if(y_draw>1000) y_draw <- 1000
                                  }
                                  if(!is.null(z)) {
                                    if(z < 0) z <- 0 else if(z>2000) z <- 2000
                                  }
                                  vec <- unlist(list(
-                                   X = x,
-                                   Y = y,
+                                   x_draw = x_draw,
+                                   y_draw = y_draw,
                                    Z = z
                                  ))
                                  string <- paste0(names(vec), vec, collapse = " ")
@@ -66,7 +75,8 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                              ),
                              private = list(
                                websocket = NULL,
-                               pending_message = NULL
+                               pending_message = NULL,
+                               portrait = NULL
                              )
 )
 

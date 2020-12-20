@@ -12,6 +12,7 @@
 #' @param x x coordinate to retrieve z value for
 #' @param y y coordinate to retrieve z value for
 #' @param matrix matrix of interpolated z-coordinates
+#' @param portrait set orientation. \code{TRUE} for portrait, \code{FALSE} for landscape
 NULL
 #' @rdname callibration
 #' @export
@@ -34,11 +35,17 @@ interpolate_z_matrix <- function(x_limits, y_limits, z_corners){
 #' @rdname callibration
 #' @export
 render_canvas <- function(lineus,
-                           x_lim = c(650,1775),
-                           y_lim = c(-1000, 1000)
+                          x_lim = c(650,1775),
+                          y_lim = c(-1000, 1000),
+                          portrait = TRUE
 ){
   z <- lineus$zmap()
-  out <- interpolate_z_matrix(x_lim, y_lim, z)
+  m <- interpolate_z_matrix(x_lim, y_lim, z)
+  if(portrait){
+    out <- m
+  } else {
+    out <- t(m[nrow(m):1,])
+  }
   return(out)
 }
 #' @rdname callibration

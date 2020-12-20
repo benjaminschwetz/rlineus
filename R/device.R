@@ -2,6 +2,7 @@
 #' @rdname device
 #' @title graphics device for line-us plotter
 #' @description readme for how to use it
+#' @param portrait set orientation. \code{TRUE} for portrait, \code{FALSE} for landscape
 #' @examples
 #' ## Only run this example in interactive R sessions
 #' if (interactive()) {
@@ -12,16 +13,18 @@
 NULL
 #' @rdname device
 #' @export
-lineus_dev <- function(){
-  plotter <- LineUsPlotter$new()
+lineus_dev <- function(portrait = TRUE){
+  plotter <- LineUsPlotter$new(portrait = portrait)
   Sys.sleep(.5)
-  z_mat <- render_canvas(plotter)
+  z_mat <- render_canvas(plotter,
+                         portrait = portrait)
   z_mat$z <- round(z_mat$z)
   devout::rdevice(
     rfunction = plotter_callback,
     device_name = "line_us",
     pl = plotter,
-    zm = z_mat
+    zm = z_mat,
+    portrait = portrait
   )
 }
 
@@ -53,10 +56,17 @@ plotter_callback <- function(
 }
 .open <- function(args, state){
   #set canvas
-  state$dd$bottom <- -1000
-  state$dd$top <- 1000
-  state$dd$left <- 650
-  state$dd$right <- 1775
+  if(state$rdata$portrait){
+    state$dd$bottom <- -1000
+    state$dd$top <- 1000
+    state$dd$left <- 650
+    state$dd$right <- 1775
+  } else {
+    state$dd$left <- -1000
+    state$dd$right <- 1000
+    state$dd$top <- 650
+    state$dd$bottom <- 1775
+  }
   #move plotter up
   up(state$rdata$pl)
   state

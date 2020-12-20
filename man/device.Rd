@@ -5,7 +5,10 @@
 \alias{lineus_dev}
 \title{graphics device for line-us plotter}
 \usage{
-lineus_dev()
+lineus_dev(portrait = TRUE)
+}
+\arguments{
+\item{portrait}{set orientation. \code{TRUE} for portrait, \code{FALSE} for landscape}
 }
 \description{
 readme for how to use it

@@ -17,6 +17,8 @@
 \item{y}{y coordinate to retrieve z value for}
 
 \item{matrix}{matrix of interpolated z-coordinates}
+
+\item{portrait}{set orientation. \code{TRUE} for portrait, \code{FALSE} for landscape}
 }
 \description{
 This family of functions deals with the fact that the paper plane is not at \code{z=0}
