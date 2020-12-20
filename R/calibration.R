@@ -5,19 +5,18 @@
 #'
 #' @description This family of functions deals with the fact that the paper plane is not at \code{z=0}
 #'
-#' @param plotter plotter (R6-Class)
+#' @param lineus plotter (R6-Class)
 #' @param x_limits minimum and maximum value of x-coordinates
 #' @param y_limits minimum and maximum value of y-coordinates
 #' @param z_corners 2x2 matrix of calibration results (use phone app)
 #' @param x x coordinate to retrieve z value for
 #' @param y y coordinate to retrieve z value for
 #' @param matrix
-#' @param lineus plotter (R6-Class)
 NULL
 #' @rdname callibration
 #' @export
-fetch_z_map <- function(plotter){
-  plotter$zmap()
+fetch_z_map <- function(lineus){
+  lineus$zmap()
 }
 #' @rdname callibration
 #' @export
@@ -38,7 +37,7 @@ render_canvas <- function(lineus,
                            x_lim = c(650,1775),
                            y_lim = c(-1000, 1000)
 ){
-  z <- plotter$zmap()
+  z <- lineus$zmap()
   out <- interpolate_z_matrix(x_lim, y_lim, z)
   return(out)
 }
