@@ -1,6 +1,6 @@
 Package: rlineus
 Title: The Line-Us plotter as a graphics device
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Benjamin",
            family = "Schwetz",
