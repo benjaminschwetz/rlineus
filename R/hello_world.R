@@ -1,4 +1,6 @@
-#' Testing the plotter
+#' Test your plotter functionality
+#'
+#' Try plotting a simple boxplot or sinus curve to check the plotter.
 #'
 #' @param what string, either boxplot or polyline
 #'

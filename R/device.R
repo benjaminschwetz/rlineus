@@ -1,9 +1,7 @@
-#' graphics device for the plotter
-#' see readme for how to use it
-#'
-#' @return
-#' @export
-#'
+#' @name device
+#' @rdname device
+#' @title graphics device for line-us plotter
+#' @description readme for how to use it
 #' @examples
 #' ## Only run this example in interactive R sessions
 #' if (interactive()) {
@@ -11,6 +9,9 @@
 #'  boxplot(data = iris, Sepal.Length ~Species)
 #'  dev.off()
 #' }
+NULL
+#' @rdname device
+#' @export
 lineus_dev <- function(){
   plotter <- LineUsPlotter$new()
   Sys.sleep(.5)
@@ -23,6 +24,16 @@ lineus_dev <- function(){
     zm = z_mat
   )
 }
+
+#' callback function for plotting
+#'
+#' @param device_call
+#' @param args
+#' @param state
+#'
+#' @return
+#'
+#' @examples
 plotter_callback <- function(
   device_call,
   args,
