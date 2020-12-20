@@ -11,7 +11,7 @@
 #' @param z_corners 2x2 matrix of calibration results (use phone app)
 #' @param x x coordinate to retrieve z value for
 #' @param y y coordinate to retrieve z value for
-#' @param matrix
+#' @param matrix matrix of interpolated z-coordinates
 NULL
 #' @rdname callibration
 #' @export

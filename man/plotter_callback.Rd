@@ -7,10 +7,11 @@
 plotter_callback(device_call, args, state)
 }
 \arguments{
-\item{state}{}
-}
-\value{
+\item{device_call}{call}
 
+\item{args}{arguments}
+
+\item{state}{state}
 }
 \description{
 callback function for plotting

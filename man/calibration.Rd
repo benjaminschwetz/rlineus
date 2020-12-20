@@ -4,7 +4,7 @@
 \alias{calibration}
 \title{Paper height calibration}
 \arguments{
-\item{plotter}{plotter (R6-Class)}
+\item{lineus}{plotter (R6-Class)}
 
 \item{x_limits}{minimum and maximum value of x-coordinates}
 
@@ -16,7 +16,7 @@
 
 \item{y}{y coordinate to retrieve z value for}
 
-\item{lineus}{plotter (R6-Class)}
+\item{matrix}{matrix of interpolated z-coordinates}
 }
 \description{
 This family of functions deals with the fact that the paper plane is not at \code{z=0}

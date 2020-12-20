@@ -27,13 +27,9 @@ lineus_dev <- function(){
 
 #' callback function for plotting
 #'
-#' @param device_call
-#' @param args
-#' @param state
-#'
-#' @return
-#'
-#' @examples
+#' @param device_call call
+#' @param args arguments
+#' @param state state
 plotter_callback <- function(
   device_call,
   args,

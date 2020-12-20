@@ -6,8 +6,6 @@
 #'
 #' @return 2x2 matrix
 #' @export
-#'
-#' @examples
 parse_zmap <- function(string){
   if(substr(string,1,2)!="ok") stop("Error receiving zmap")
   numbers <- substr(string,10,nchar(string)-1)
