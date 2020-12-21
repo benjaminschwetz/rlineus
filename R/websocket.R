@@ -45,8 +45,8 @@ LineUsPlotter <- R6::R6Class("LineUsPlotter",
                                    if(z < 0) z <- 0 else if(z>2000) z <- 2000
                                  }
                                  vec <- unlist(list(
-                                   x_draw = x_draw,
-                                   y_draw = y_draw,
+                                   X = x_draw,
+                                   Y = y_draw,
                                    Z = z
                                  ))
                                  string <- paste0(names(vec), vec, collapse = " ")

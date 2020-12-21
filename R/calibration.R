@@ -39,13 +39,17 @@ render_canvas <- function(lineus,
                           y_lim = c(-1000, 1000),
                           portrait = TRUE
 ){
-  z <- lineus$zmap()
-  m <- interpolate_z_matrix(x_lim, y_lim, z)
   if(portrait){
-    out <- m
+    x <- x_lim
+    y <- y_lim
+    z <- lineus$zmap()
   } else {
-    out <- t(m[nrow(m):1,])
+    x <- y_lim
+    y <- x_lim
+    zmap <- lineus$zmap()
+    z <- t(zmap[nrow(zmap):1,])
   }
+  out <- interpolate_z_matrix(x, y, z)
   return(out)
 }
 #' @rdname callibration

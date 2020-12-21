@@ -4,10 +4,12 @@
 \alias{hello_world}
 \title{Test your plotter functionality}
 \usage{
-hello_world(what = c("boxplot", "polyline"))
+hello_world(what = c("boxplot", "polyline"), portrait = TRUE)
 }
 \arguments{
 \item{what}{string, either boxplot or polyline}
+
+\item{portrait}{should the plot be in portrait (TRUE), or landscape (FALSE)?}
 }
 \value{
 
