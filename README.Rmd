@@ -37,7 +37,7 @@ This still needs to be done with the [phone app](https://www.line-us.com/softwar
 ### Test the setup
 
 ```{r eval=FALSE}
-rlineus::hello_world()
+rlineus::hello_world(portrait = TRUE)
 ```
 
 ### Usage

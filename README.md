@@ -25,7 +25,7 @@ app](https://www.line-us.com/software.html).
 ### Test the setup
 
 ``` r
-rlineus::hello_world()
+rlineus::hello_world(portrait = TRUE)
 ```
 
 ### Usage
