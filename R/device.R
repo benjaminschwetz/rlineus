@@ -13,8 +13,10 @@
 NULL
 #' @rdname device
 #' @export
-lineus_dev <- function(portrait = TRUE){
-  plotter <- LineUsPlotter$new(portrait = portrait)
+lineus_dev <- function(portrait = TRUE, debug = FALSE){
+  if(debug) {
+    plotter <- debugPlotter$new(portrait = portrait)
+  } else  plotter <- LineUsPlotter$new(portrait = portrait)
   Sys.sleep(.5)
   z_mat <- render_canvas(plotter,
                          portrait = portrait)
@@ -24,7 +26,8 @@ lineus_dev <- function(portrait = TRUE){
     device_name = "line_us",
     pl = plotter,
     zm = z_mat,
-    portrait = portrait
+    portrait = portrait,
+    debug = debug
   )
 }
 

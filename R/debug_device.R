@@ -72,13 +72,13 @@ debugPlotter <- R6::R6Class("debugPlotter",
                                connect_state = FALSE,
                                moves = data.frame(
                                  G_code = NA,
-                                 X = 0,
-                                 Y = 0,
+                                 X = 1000,
+                                 Y = 1000,
                                  Z = 2000
                                ),
                                cur_position = list(
-                                 X = 0,
-                                 Y = 0,
+                                 X = 1000,
+                                 Y = 1000,
                                  Z = 2000
                                )
 
