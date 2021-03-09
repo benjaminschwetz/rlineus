@@ -75,6 +75,21 @@ plotter_callback <- function(
   state
 }
 .close <- function(args, state){
+  if(state$rdata$debug){
+    tmp_file <- tempfile(fileext = ".png")
+    p <- ggplot(state$rdata$pl$moves_table()) +
+      aes(X,Y) +
+      geom_path(aes(
+        alpha = Z > 0,
+        color = Z > 0)) +
+      geom_point(shape = 1) +
+      scale_alpha_manual(
+        values = c(1, .3),
+        guide = FALSE
+      )
+    ggsave(tmp_file, plot = p)
+    rstudioapi::viewer(tmp_file)
+  }
   state$rdata$pl$disconnect()
   state
 }
