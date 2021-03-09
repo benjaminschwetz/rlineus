@@ -7,9 +7,9 @@
 #'
 #' @return
 #' @export
-hello_world <- function(what = c("boxplot", "polyline"), portrait = TRUE){
+hello_world <- function(what = c("boxplot", "polyline"), portrait = TRUE, debug = FALSE){
   what <- match.arg(what)
-  lineus_dev(portrait = portrait)
+  lineus_dev(portrait = portrait, debug = debug)
   switch(
     what,
     "boxplot" =   boxplot(data = iris, Sepal.Length ~Species),
